@@ -47,8 +47,12 @@ def top_songs(artist_name: str):
   hits_names = []
 
   for hit in hits:
+    song_name = hit["track"]["title"]
+    response_lyrics = requests.get(f"http://api.lyrics.ovh/v1/{artist_name}/{song_name}")
+    json_response_lyrics = response_lyrics.json()
     hits_names.append({
-      "name": hit["track"]["title"]
+      "name": song_name,
+      "lyrics": json_response_lyrics["lyrics"]
     })
 
   return {
