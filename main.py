@@ -10,7 +10,14 @@ app = FastAPI()
 @app.get("/")
 def index():
   return {
-    "message": "Our first microservice"
+    "message": "Our first microservice",
+    "date": datetime.now()
+  }
+
+@app.get("/version")
+def version():
+  return {
+    "version-number": "0.0.1"
   }
 
 @app.get("/lyrics/{artist_name}/{song_name}")
