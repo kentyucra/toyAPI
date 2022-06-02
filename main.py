@@ -37,7 +37,7 @@ def top_songs(artist_name: str):
 
   url = "https://shazam.p.rapidapi.com/search"
 
-  querystring = {"term":"coldplay","offset":"0","limit":"10"}
+  querystring = {"term":artist_name,"offset":"0","limit":"10"}
 
   response = requests.request("GET", url, headers=headers, params=querystring)
   json_res = response.json()
